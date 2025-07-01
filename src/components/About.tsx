@@ -1,62 +1,66 @@
 
-import { Code, Palette, Zap, Users } from 'lucide-react';
+import { Code, Palette, Smartphone, Globe } from 'lucide-react';
 
 const About = () => {
   const skills = [
-    { name: 'Frontend Development', level: 90 },
-    { name: 'UI/UX Design', level: 85 },
-    { name: 'Backend Development', level: 80 },
-    { name: 'Mobile Development', level: 75 },
+    { name: 'JavaScript/TypeScript', level: 95 },
+    { name: 'React/Next.js', level: 90 },
+    { name: 'HTML/CSS', level: 95 },
+    { name: 'Node.js', level: 80 },
   ];
 
   const services = [
     {
       icon: Code,
-      title: 'Web Development',
-      description: 'Building responsive and performant web applications using modern technologies.',
+      title: 'Frontend Development',
+      description: 'Building modern, responsive web applications with clean code and best practices.',
     },
     {
       icon: Palette,
       title: 'UI/UX Design',
-      description: 'Creating intuitive and beautiful user interfaces that enhance user experience.',
+      description: 'Creating intuitive and visually appealing user interfaces that enhance user experience.',
     },
     {
-      icon: Zap,
-      title: 'Performance Optimization',
-      description: 'Optimizing applications for speed, SEO, and overall performance.',
+      icon: Smartphone,
+      title: 'Mobile Development',
+      description: 'Developing mobile-first responsive applications that work seamlessly across all devices.',
     },
     {
-      icon: Users,
-      title: 'Consultation',
-      description: 'Providing technical guidance and architectural decisions for your projects.',
+      icon: Globe,
+      title: 'Web Performance',
+      description: 'Optimizing applications for speed, accessibility, and search engine performance.',
     },
   ];
 
   return (
-    <section id="about" className="py-20 px-6">
+    <section id="about" className="py-20 px-6 bg-white text-black">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
-          <p className="text-xl text-zinc-400 max-w-3xl mx-auto">
-            I'm a passionate developer with over 5 years of experience creating digital solutions 
-            that make a difference. I love turning complex problems into simple, beautiful designs.
+        <div className="text-center mb-20">
+          <p className="text-sm text-gray-600 mb-4 font-medium tracking-wide">ABOUT ME</p>
+          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
+            WHO I AM
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            I'm a frontend developer with a passion for creating digital experiences that are not only 
+            beautiful but also functional and accessible. I believe in the power of clean code and 
+            user-centered design.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 mb-20">
+        <div className="grid lg:grid-cols-2 gap-20 mb-20">
           {/* Skills */}
           <div>
-            <h3 className="text-2xl font-bold mb-8">Skills & Expertise</h3>
-            <div className="space-y-6">
+            <h3 className="text-2xl font-bold mb-8 tracking-tight">TECHNICAL SKILLS</h3>
+            <div className="space-y-8">
               {skills.map((skill) => (
                 <div key={skill.name}>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-zinc-300">{skill.name}</span>
-                    <span className="text-blue-400">{skill.level}%</span>
+                  <div className="flex justify-between mb-3">
+                    <span className="font-medium">{skill.name}</span>
+                    <span className="text-gray-600">{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-zinc-800 rounded-full h-2">
+                  <div className="w-full bg-gray-200 h-1">
                     <div 
-                      className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-1000"
+                      className="bg-black h-1 transition-all duration-1000"
                       style={{ width: `${skill.level}%` }}
                     ></div>
                   </div>
@@ -67,22 +71,22 @@ const About = () => {
 
           {/* Experience */}
           <div>
-            <h3 className="text-2xl font-bold mb-8">Experience</h3>
-            <div className="space-y-6">
-              <div className="border-l-4 border-blue-500 pl-6">
-                <h4 className="text-xl font-semibold text-white">Senior Frontend Developer</h4>
-                <p className="text-blue-400 mb-2">Tech Company • 2022-Present</p>
-                <p className="text-zinc-400">
-                  Leading frontend development initiatives and mentoring junior developers 
-                  while building scalable web applications.
+            <h3 className="text-2xl font-bold mb-8 tracking-tight">EXPERIENCE</h3>
+            <div className="space-y-8">
+              <div className="border-l-2 border-black pl-6">
+                <h4 className="text-lg font-bold">Senior Frontend Developer</h4>
+                <p className="text-gray-600 mb-2 font-medium">TechCorp • 2022-Present</p>
+                <p className="text-gray-600 leading-relaxed">
+                  Leading frontend development initiatives, mentoring junior developers, 
+                  and architecting scalable web applications using modern technologies.
                 </p>
               </div>
-              <div className="border-l-4 border-purple-500 pl-6">
-                <h4 className="text-xl font-semibold text-white">Full Stack Developer</h4>
-                <p className="text-purple-400 mb-2">Startup Inc • 2020-2022</p>
-                <p className="text-zinc-400">
-                  Developed and maintained multiple web applications using React, Node.js, 
-                  and modern development practices.
+              <div className="border-l-2 border-gray-300 pl-6">
+                <h4 className="text-lg font-bold">Frontend Developer</h4>
+                <p className="text-gray-600 mb-2 font-medium">StartupInc • 2020-2022</p>
+                <p className="text-gray-600 leading-relaxed">
+                  Developed and maintained multiple React applications, collaborated with 
+                  design teams, and implemented responsive designs across various platforms.
                 </p>
               </div>
             </div>
@@ -91,18 +95,21 @@ const About = () => {
 
         {/* Services */}
         <div>
-          <h3 className="text-3xl font-bold text-center mb-12">What I Do</h3>
+          <div className="text-center mb-16">
+            <p className="text-sm text-gray-600 mb-4 font-medium tracking-wide">SERVICES</p>
+            <h3 className="text-3xl md:text-4xl font-bold tracking-tight">WHAT I DO</h3>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => {
               const Icon = service.icon;
               return (
                 <div 
                   key={service.title}
-                  className="bg-zinc-900/50 p-6 rounded-xl border border-zinc-800 hover:border-zinc-600 transition-all duration-300 hover:transform hover:-translate-y-2"
+                  className="text-center p-8 hover:bg-gray-50 transition-all duration-300"
                 >
-                  <Icon className="text-blue-400 mb-4" size={48} />
-                  <h4 className="text-xl font-semibold mb-3">{service.title}</h4>
-                  <p className="text-zinc-400">{service.description}</p>
+                  <Icon className="mx-auto mb-6" size={48} />
+                  <h4 className="text-lg font-bold mb-4 tracking-tight">{service.title}</h4>
+                  <p className="text-gray-600 leading-relaxed">{service.description}</p>
                 </div>
               );
             })}

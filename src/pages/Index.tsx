@@ -32,7 +32,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="bg-zinc-950 text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen">
       <Navigation activeSection={activeSection} />
       <Hero />
       <About />

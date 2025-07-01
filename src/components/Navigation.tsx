@@ -12,7 +12,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
   const navItems = [
     { id: 'hero', label: 'Home' },
     { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
+    { id: 'projects', label: 'Work' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -23,24 +23,24 @@ const Navigation = ({ activeSection }: NavigationProps) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm">
+      <div className="max-w-7xl mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
-          <div className="text-xl font-bold text-white">
-            Portfolio
+          <div className="text-xl font-bold text-white tracking-wide">
+            CHIMDI
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-12">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`transition-colors duration-300 hover:text-blue-400 ${
-                  activeSection === item.id ? 'text-blue-400' : 'text-zinc-300'
+                className={`text-sm font-medium tracking-wide transition-colors duration-300 ${
+                  activeSection === item.id ? 'text-white' : 'text-gray-400 hover:text-white'
                 }`}
               >
-                {item.label}
+                {item.label.toUpperCase()}
               </button>
             ))}
           </div>
@@ -56,16 +56,16 @@ const Navigation = ({ activeSection }: NavigationProps) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
+          <div className="md:hidden mt-6 pb-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left py-2 transition-colors duration-300 hover:text-blue-400 ${
-                  activeSection === item.id ? 'text-blue-400' : 'text-zinc-300'
+                className={`block w-full text-left py-3 text-sm font-medium tracking-wide transition-colors duration-300 ${
+                  activeSection === item.id ? 'text-white' : 'text-gray-400 hover:text-white'
                 }`}
               >
-                {item.label}
+                {item.label.toUpperCase()}
               </button>
             ))}
           </div>
