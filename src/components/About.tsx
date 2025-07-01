@@ -1,4 +1,3 @@
-
 import { Code, Palette, Smartphone, Globe } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
@@ -7,33 +6,45 @@ const About = () => {
   const [skillsAnimated, setSkillsAnimated] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
+  // Updated skills from resume
   const skills = [
-    { name: 'JavaScript/TypeScript', level: 95 },
+    { name: 'Python', level: 85 },
+    { name: 'TypeScript', level: 90 },
+    { name: 'JavaScript', level: 90 },
+    { name: 'SQL', level: 80 },
     { name: 'React/Next.js', level: 90 },
-    { name: 'HTML/CSS', level: 95 },
-    { name: 'Node.js', level: 80 },
+    { name: 'React-Native', level: 85 },
+    { name: 'Node.js', level: 85 },
+    { name: 'Redux', level: 80 },
+    { name: 'PostgreSQL/SQLLite', level: 80 },
+    { name: 'Prisma ORM', level: 75 },
+    { name: 'Docker/Kubernetes', level: 70 },
+    { name: 'Git', level: 90 },
+    { name: 'XCode', level: 70 },
+    { name: 'RESTful APIs/GraphQL', level: 80 },
   ];
 
+  // Updated services
   const services = [
     {
+      icon: Smartphone,
+      title: 'Mobile App Development',
+      description: 'Building scalable and performant mobile applications using React Native',
+    },
+    {
       icon: Code,
-      title: 'Frontend Development',
-      description: 'Building modern, responsive web applications with clean code and best practices.',
+      title: 'Backend/API Development',
+      description: 'Designing RESTful and GraphQL APIs, database migrations, and backend logic with Node.js.',
     },
     {
       icon: Palette,
-      title: 'UI/UX Design',
-      description: 'Creating intuitive and visually appealing user interfaces that enhance user experience.',
-    },
-    {
-      icon: Smartphone,
-      title: 'Mobile Development',
-      description: 'Developing mobile-first responsive applications that work seamlessly across all devices.',
+      title: 'AI/ML',
+      description: 'Integrating AI-powered features for enhanced user engagement and analytics.',
     },
     {
       icon: Globe,
-      title: 'Web Performance',
-      description: 'Optimizing applications for speed, accessibility, and search engine performance.',
+      title: 'Web Development',
+      description: 'Building responsive and user-friendly web applications using React and Next.js.',
     },
   ];
 
@@ -42,17 +53,14 @@ const About = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Delay skills animation
           setTimeout(() => setSkillsAnimated(true), 800);
         }
       },
       { threshold: 0.2 }
     );
-
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => observer.disconnect();
   }, []);
 
@@ -60,30 +68,15 @@ const About = () => {
     <section ref={sectionRef} id="about" className="py-20 px-6 bg-white text-black">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <p className={`text-sm text-gray-600 mb-4 font-medium tracking-wide transition-all duration-800 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}>
-            ABOUT ME
-          </p>
-          <h2 className={`text-4xl md:text-6xl font-bold mb-8 tracking-tight transition-all duration-1000 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            WHO I AM
-          </h2>
-          <p className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-          }`}>
-            I'm a frontend developer with a passion for creating digital experiences that are not only 
-            beautiful but also functional and accessible. I believe in the power of clean code and 
-            user-centered design.
+          <p className={`text-sm text-gray-600 mb-4 font-medium tracking-wide transition-all duration-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>ABOUT ME</p>
+          <h2 className={`text-4xl md:text-6xl font-bold mb-8 tracking-tight transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>DIVYANSHU SHARMA</h2>
+          <p className={`text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            Mobile Application Developer passionate about building scalable, AI-powered solutions. Experienced in backend API development, database migrations, and integrating advanced analytics. Always eager to learn and contribute to impactful projects.
           </p>
         </div>
-
         <div className="grid lg:grid-cols-2 gap-20 mb-20">
           {/* Skills */}
-          <div className={`transition-all duration-1000 delay-600 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-          }`}>
+          <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}> 
             <h3 className="text-2xl font-bold mb-8 tracking-tight">TECHNICAL SKILLS</h3>
             <div className="space-y-8">
               {skills.map((skill, index) => (
@@ -105,42 +98,34 @@ const About = () => {
               ))}
             </div>
           </div>
-
           {/* Experience */}
-          <div className={`transition-all duration-1000 delay-800 ${
-            isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-          }`}>
+          <div className={`transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}> 
             <h3 className="text-2xl font-bold mb-8 tracking-tight">EXPERIENCE</h3>
             <div className="space-y-8">
-              <div className={`border-l-2 border-black pl-6 transition-all duration-800 delay-1000 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}>
-                <h4 className="text-lg font-bold">Senior Frontend Developer</h4>
-                <p className="text-gray-600 mb-2 font-medium">TechCorp • 2022-Present</p>
-                <p className="text-gray-600 leading-relaxed">
-                  Leading frontend development initiatives, mentoring junior developers, 
-                  and architecting scalable web applications using modern technologies.
-                </p>
+              <div className={`border-l-2 border-black pl-6 transition-all duration-800 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}> 
+                <h4 className="text-lg font-bold">Mobile Application Developer Intern</h4>
+                <p className="text-gray-600 mb-2 font-medium">Zingvel Travels, Noida  March 2024 – May 2024</p>
+                <ul className="list-disc ml-6 text-gray-600 leading-relaxed">
+                  <li>Built and deployed 4 scalable Node.js backend APIs, supporting 6 core mobile app functionalities for 25,000+ active users, employing RESTful principles for modular design.</li>
+                  <li>Executed seamless migration of the app’s database from MySQL to SQLLite, optimizing performance by 25% and ensuring &lt;5 minutes of total downtime with 100% data integrity.</li>
+                  <li>Designed and integrated an AI-powered travel recommendation system, enhancing user engagement by 18%.</li>
+                </ul>
               </div>
-              <div className={`border-l-2 border-gray-300 pl-6 transition-all duration-800 delay-1200 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}>
-                <h4 className="text-lg font-bold">Frontend Developer</h4>
-                <p className="text-gray-600 mb-2 font-medium">StartupInc • 2020-2022</p>
-                <p className="text-gray-600 leading-relaxed">
-                  Developed and maintained multiple React applications, collaborated with 
-                  design teams, and implemented responsive designs across various platforms.
-                </p>
+              <div className={`border-l-2 border-gray-300 pl-6 transition-all duration-800 delay-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}> 
+                <h3 className="text-lg font-bold">Education</h3>
+                <p className="text-gray-600 mb-2 font-medium">Ajay Kumar Garg Engineering College, B.Tech in Information Technology</p>
+                <ul className="list-disc ml-6 text-gray-600 leading-relaxed">
+                  <li>Nov 2021 - May 2025</li>
+                  <li>GPA: 7.82/10</li>
+                  <li>Coursework: Database Management System, Software Engineering, Data Analytics, Computer Networks, Java Programming, Cloud Fundamentals</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-
         {/* Services */}
         <div>
-          <div className={`text-center mb-16 transition-all duration-1000 delay-1400 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
+          <div className={`text-center mb-16 transition-all duration-1000 delay-1400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}> 
             <p className="text-sm text-gray-600 mb-4 font-medium tracking-wide">SERVICES</p>
             <h3 className="text-3xl md:text-4xl font-bold tracking-tight">WHAT I DO</h3>
           </div>
@@ -150,9 +135,7 @@ const About = () => {
               return (
                 <div 
                   key={service.title}
-                  className={`group text-center p-8 hover:bg-gray-50 transition-all duration-700 hover:shadow-lg hover:-translate-y-2 cursor-pointer ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}
+                  className={`group text-center p-8 hover:bg-gray-50 transition-all duration-700 hover:shadow-lg hover:-translate-y-2 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                   style={{ transitionDelay: `${1600 + index * 200}ms` }}
                 >
                   <Icon className="mx-auto mb-6 transition-all duration-500 group-hover:scale-110 group-hover:text-blue-600" size={48} />

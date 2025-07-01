@@ -41,7 +41,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
       <div className="max-w-7xl mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
           <div className="text-xl font-bold text-white tracking-wide hover:scale-105 transition-transform duration-300 cursor-pointer">
-            CHIMDI
+            DIVYANSHU
           </div>
 
           {/* Desktop Navigation */}

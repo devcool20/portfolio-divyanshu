@@ -1,5 +1,4 @@
-
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -15,42 +14,39 @@ const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { toast } = useToast();
 
+  // Updated contact info
   const contactInfo = [
     {
       icon: Mail,
       label: 'Email',
-      value: 'hello@chimdi.dev',
-      href: 'mailto:hello@chimdi.dev',
+      value: 'sharmadivyanshu265@gmail.com',
+      href: 'mailto:sharmadivyanshu265@gmail.com',
     },
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      label: 'Mobile',
+      value: '7017453595', // Replace with actual number if available
+      href: '#',
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Lagos, Nigeria',
+      value: 'Delhi, India',
       href: '#',
     },
   ];
 
+  // Updated social links
   const socialLinks = [
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com',
+      href: 'https://github.com/devcool20',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://linkedin.com',
-    },
-    {
-      icon: Twitter,
-      label: 'Twitter',
-      href: 'https://twitter.com',
+      href: 'https://www.linkedin.com/in/divyanshu-sharma-b9b534113/',
     },
   ];
 
@@ -63,11 +59,9 @@ const Contact = () => {
       },
       { threshold: 0.1 }
     );
-
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-
     return () => observer.disconnect();
   }, []);
 
@@ -78,7 +72,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Missing Information",
@@ -87,23 +80,16 @@ const Contact = () => {
       });
       return;
     }
-
-    // Create mailto link with form data
     const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio');
     const body = encodeURIComponent(
-      `Hi Chimdi,\n\n${formData.message}\n\nBest regards,\n${formData.name}\n${formData.email}`
+      `Hi Divyanshu,\n\n${formData.message}\n\nBest regards,\n${formData.name}\n${formData.email}`
     );
-    const mailtoLink = `mailto:hello@chimdi.dev?subject=${subject}&body=${body}`;
-    
-    // Open email client
+    const mailtoLink = `mailto:sharmadivyanshu265@gmail.com?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
-    
     toast({
       title: "Email Client Opened",
       description: "Your email client should now open with the message pre-filled.",
     });
-
-    // Reset form
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
@@ -285,7 +271,7 @@ const Contact = () => {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
         }`}>
           <p className="text-gray-400 text-sm tracking-wide">
-            © 2024 CHIMDI. ALL RIGHTS RESERVED.
+            © 2024 DIVYANSHU. ALL RIGHTS RESERVED.
           </p>
         </div>
       </div>

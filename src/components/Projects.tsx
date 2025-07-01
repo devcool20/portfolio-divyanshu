@@ -1,4 +1,3 @@
-
 import { ExternalLink, Github } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
@@ -7,42 +6,33 @@ const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
+  // Updated projects from resume
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'A modern e-commerce solution built with React and Node.js, featuring real-time inventory management and seamless payment integration.',
+      title: 'Stocker',
+      description: 'React Native stock tracker with real-time market data and ML-powered sentiment analysis, consuming RESTful APIs for data retrieval. Integrated news API and predictive analytics for investment insights.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      liveUrl: '#',
-      githubUrl: '#',
+      tech: ['React Native', 'RESTful APIs', 'ML', 'News API'],
+      liveUrl: 'https://www.loom.com/share/d7d586954858432bbe4ed5d3ecefcf3d', // Replace with actual video/demo link if available
+      githubUrl: 'https://github.com/devcool20/stocker', // Replace with actual GitHub link
     },
     {
       id: 2,
-      title: 'Task Management Dashboard',
-      description: 'A collaborative project management tool with real-time updates, team collaboration features, and intuitive drag-and-drop interface.',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
-      tech: ['Vue.js', 'Firebase', 'Tailwind CSS'],
-      liveUrl: '#',
-      githubUrl: '#',
+      title: 'Sales Doc',
+      description: 'Hybrid AI application for real-time sales conversation analysis and coaching, featuring a Reinforcement Learning model with 96.7% prediction accuracy. Delivers dynamic conversion probability, per-turn suggestions, and overall strategic advice.',
+      image: 'https://cdn.analyticsvidhya.com/wp-content/uploads/2019/10/Reinforcement-Learning_3.png',
+      tech: ['AI', 'Reinforcement Learning', 'Analytics'],
+      liveUrl: 'https://drive.google.com/file/d/19IHrnNWW3UxYlpkP5GmKclCHoUKaTPM-/view', // Replace with actual GitHub link
     },
     {
       id: 3,
-      title: 'Weather Analytics App',
-      description: 'A comprehensive weather application with detailed forecasts, interactive maps, and data visualization components.',
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop',
-      tech: ['React', 'D3.js', 'Weather API'],
-      liveUrl: '#',
-      githubUrl: '#',
-    },
-    {
-      id: 4,
-      title: 'Portfolio Website',
-      description: 'A responsive portfolio showcase featuring smooth animations, modern design principles, and optimized performance.',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop',
-      tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-      liveUrl: '#',
-      githubUrl: '#',
+      title: 'F1 Community App',
+      description: 'Motorsport community platform for chatting and sharing views with Supabase backend and ticket commerce. Interactive driver profiles with live statistics and discussion forums.',
+      image: 'https://play-lh.googleusercontent.com/n23XmdE9mmi9HkLF4pfT1QgaIAxeLMzvIvvTSyq9YTyma6X9i-5HuE-8Fc31g55sSQ',
+      tech: ['Supabase', 'React', 'Community', 'Live Stats'],
+      liveUrl: 'https://www.loom.com/share/2338956b02af4254a96cb1cac58bae4b?sid=d80b93d3-cf8c-4fcc-8ec6-e8b710c64d39', // Replace with actual video/demo link if available
+      githubUrl: 'https://github.com/devcool20/projectf1', // Replace with actual GitHub link
     },
   ];
 

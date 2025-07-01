@@ -5,7 +5,7 @@ import { ArrowDown } from 'lucide-react';
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const [isVisible, setIsVisible] = useState(false);
-  const fullText = "Frontend Developer";
+  const fullText = "Software Developer";
   
   useEffect(() => {
     // Trigger entrance animation
@@ -43,7 +43,7 @@ const Hero = () => {
           <h1 className={`text-6xl md:text-8xl font-bold mb-4 text-white tracking-tight transition-all duration-1200 delay-500 ${
             isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
           }`}>
-            CHIMDI
+            DVYANSHU SHARMA
           </h1>
           <div className={`text-xl md:text-2xl text-gray-300 font-light mb-12 h-8 transition-all duration-1000 delay-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -56,7 +56,7 @@ const Hero = () => {
         <p className={`text-base md:text-lg text-gray-400 mb-16 max-w-2xl mx-auto leading-relaxed font-light transition-all duration-1000 delay-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}>
-          I'm a passionate frontend developer who loves creating beautiful, 
+          I'm a passionate software developer who loves creating beautiful, 
           functional, and user-centered digital experiences.
         </p>
 
