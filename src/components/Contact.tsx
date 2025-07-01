@@ -1,11 +1,19 @@
 
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
   const sectionRef = useRef<HTMLElement>(null);
+  const { toast } = useToast();
 
   const contactInfo = [
     {
@@ -63,8 +71,44 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Create mailto link with form data
+    const subject = encodeURIComponent(formData.subject || 'Contact from Portfolio');
+    const body = encodeURIComponent(
+      `Hi Chimdi,\n\n${formData.message}\n\nBest regards,\n${formData.name}\n${formData.email}`
+    );
+    const mailtoLink = `mailto:hello@chimdi.dev?subject=${subject}&body=${body}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    toast({
+      title: "Email Client Opened",
+      description: "Your email client should now open with the message pre-filled.",
+    });
+
+    // Reset form
+    setFormData({ name: '', email: '', subject: '', message: '' });
+  };
+
   return (
-    <section ref={sectionRef} id="contact" className="py-20 px-6 bg-black text-white">
+    <section ref={sectionRef} id="contact" className="py-20 px-6 bg-black text-white font-sans">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <p className={`text-sm text-gray-400 mb-4 font-medium tracking-wide transition-all duration-800 ${
@@ -147,19 +191,22 @@ const Contact = () => {
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
           }`}>
             <h3 className="text-2xl font-bold mb-12 tracking-tight">SEND MESSAGE</h3>
-            <form className="space-y-8">
+            <form className="space-y-8" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="relative">
                   <label htmlFor="name" className="block text-sm font-medium mb-3 tracking-wide">
-                    NAME
+                    NAME *
                   </label>
                   <input
                     type="text"
                     id="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-700 focus:border-white focus:outline-none transition-all duration-500 text-white"
                     placeholder="Your name"
                     onFocus={() => setFocusedField('name')}
                     onBlur={() => setFocusedField(null)}
+                    required
                   />
                   <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-500 ${
                     focusedField === 'name' ? 'w-full' : 'w-0'
@@ -167,15 +214,18 @@ const Contact = () => {
                 </div>
                 <div className="relative">
                   <label htmlFor="email" className="block text-sm font-medium mb-3 tracking-wide">
-                    EMAIL
+                    EMAIL *
                   </label>
                   <input
                     type="email"
                     id="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-700 focus:border-white focus:outline-none transition-all duration-500 text-white"
                     placeholder="your@email.com"
                     onFocus={() => setFocusedField('email')}
                     onBlur={() => setFocusedField(null)}
+                    required
                   />
                   <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-500 ${
                     focusedField === 'email' ? 'w-full' : 'w-0'
@@ -189,6 +239,8 @@ const Contact = () => {
                 <input
                   type="text"
                   id="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
                   className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-700 focus:border-white focus:outline-none transition-all duration-500 text-white"
                   placeholder="Project discussion"
                   onFocus={() => setFocusedField('subject')}
@@ -200,15 +252,18 @@ const Contact = () => {
               </div>
               <div className="relative">
                 <label htmlFor="message" className="block text-sm font-medium mb-3 tracking-wide">
-                  MESSAGE
+                  MESSAGE *
                 </label>
                 <textarea
                   id="message"
                   rows={6}
+                  value={formData.message}
+                  onChange={handleInputChange}
                   className="w-full px-0 py-3 bg-transparent border-0 border-b border-gray-700 focus:border-white focus:outline-none transition-all duration-500 resize-none text-white"
                   placeholder="Tell me about your project..."
                   onFocus={() => setFocusedField('message')}
                   onBlur={() => setFocusedField(null)}
+                  required
                 ></textarea>
                 <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-500 ${
                   focusedField === 'message' ? 'w-full' : 'w-0'
@@ -216,7 +271,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="group relative px-8 py-4 bg-white text-black font-medium text-sm tracking-wide hover:bg-gray-100 transition-all duration-500 overflow-hidden hover:shadow-lg hover:shadow-white/20 transform hover:-translate-y-1"
+                className="group relative px-8 py-4 bg-white text-black font-semibold text-sm tracking-wide hover:bg-gray-100 transition-all duration-500 overflow-hidden hover:shadow-lg hover:shadow-white/20 transform hover:-translate-y-1"
               >
                 <span className="relative z-10">SEND MESSAGE</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white to-gray-100 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
